@@ -23,9 +23,13 @@ public class FileRoute extends RouteBuilder {
         from("file:{{bars.download}}?noop=true&charset=windows-1251")
                 .unmarshal(format)
                 .split(body()).streaming()
-                .setBody(exchange -> Optional.of(exchange.getIn().getBody()).map(new BarMapper()).orElseThrow(IllegalArgumentException::new))
-//                .aggregate().constant(true)
-                .bean("barEntityRepository","save")
+                    .setBody(exchange -> Optional.of(exchange.getIn().getBody()).map(new BarMapper()).orElseThrow(IllegalArgumentException::new))
+                    .aggregate(constant(true), AggregationStrategies.groupedBody())
+                    .completionSize(1000)
+                    .completionTimeout(2000)
+                    .forceCompletionOnStop()
+                        .bean("barEntityRepository","saveAll")
+                    .log(LoggingLevel.INFO,"Update complete")
         ;
     }
 }
