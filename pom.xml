@@ -7,7 +7,7 @@
     <groupId>ru.knappia.camel</groupId>
     <artifactId>bars</artifactId>
     <packaging>jar</packaging>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <name>bars</name>
 
@@ -23,7 +23,6 @@
         <java.version>1.8</java.version>
         <spring-version>2.0.3.RELEASE</spring-version>
         <camel-version>2.22.1</camel-version>
-        <h2.version>1.4.190</h2.version>
     </properties>
 
     <dependencyManagement>
@@ -52,12 +51,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        <!--embedded db-->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
 
         <dependency>
@@ -103,11 +96,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.camel/camel-jsonpath -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.camel</groupId>-->
-            <!--<artifactId>camel-jsonpath</artifactId>-->
-        <!--</dependency>-->
 
         <!--They see me rolling-->
         <dependency>
