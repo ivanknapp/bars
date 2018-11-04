@@ -1,4 +1,4 @@
-package ru.knappia.camel;
+package ru.knappia.bars;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

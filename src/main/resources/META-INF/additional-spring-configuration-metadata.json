@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "bars.download",
+      "type": "java.lang.String",
+      "description": "bars download folder"
+  }
+] }
