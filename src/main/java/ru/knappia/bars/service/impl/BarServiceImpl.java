@@ -22,4 +22,9 @@ public class BarServiceImpl implements BarService {
     public Long getCount() {
         return barEntityRepository.count();
     }
+
+    @Override
+    public List<BarEntity> findBarByName(String name) {
+        return barEntityRepository.findAllByName(name);
+    }
 }

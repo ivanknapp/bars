@@ -4,11 +4,29 @@
     <meta charset="utf-8">
     <title>Поиск</title>
 </head>
-<body>
-<form>
-    <h1>Бары Москвы</h1>
-    <p><input type="search" name="q" placeholder="Поиск по названию или расположению">
-        <input type="submit" value="НАЙТИ"></p>
-</form>
+<body ng-app="bar">
+<div class="container" ng-controller="SearchController">
+    <div class="row">
+        <h1>Бары Москвы</h1>
+        <input type="text"
+               ng-model="barName"
+               class="input-sm custom-width spacing"
+               placeholder="Поиск по названию или расположению"
+        />
+        <button ng-click="findBarByName()" class="btn btn-sm btn-info">НАЙТИ</button>
+    </div>
+    <div class="row">
+        <p>{{allBarsCount | json}}</p>
+        <p>{{allBars | json}}</p>
+    </div>
+    </div>
+</div>
 </body>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="../js/app/app.js"></script>
+<script src="../js/app/BarService.js"></script>
+<script src="../js/app/SearchController.js"></script>
+<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/app/app.css"/>
 </html>

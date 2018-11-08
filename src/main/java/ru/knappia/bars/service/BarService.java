@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface BarService {
     List<BarEntity> getAllBars();
+
     Long getCount();
+
+    List<BarEntity> findBarByName(String name);
 }
