@@ -653,7 +653,7 @@ button, input, input[type="button"], input[type="email"], input[type="submit"], 
     display: inline-block;
 }
 .page_container_left {
-    width: 645px;
+    /*width: 645px;*/
     box-sizing: border-box;
     padding-top: 0px;
     padding-right: 30px;

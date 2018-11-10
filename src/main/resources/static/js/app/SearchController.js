@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 var module = angular.module('bar.controllers', []);
 module.controller("SearchController", ["$scope", "BarService",
@@ -8,7 +8,6 @@ module.controller("SearchController", ["$scope", "BarService",
 
         BarService.getCountOfBars().then(function (value) {
             $scope.allBarsCount = value.data;
-            console.error(value.data);
         }, function (reason) {
             console.log("error occured");
         }, function (value) {
@@ -18,6 +17,7 @@ module.controller("SearchController", ["$scope", "BarService",
         $scope.findBarByName = function () {
             BarService.getBarByName($scope.barName).then(function (value) {
                 $scope.allBars = value.data;
+                $scope.allBarsCount = $scope.allBars.length;
             }, function (reason) {
                 console.log("error occured");
             }, function (value) {

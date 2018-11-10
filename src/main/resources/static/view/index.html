@@ -73,20 +73,8 @@
                     <section class="search j-list-container">
                         <div class="page_container">
                             <div class="results">
-                                <ul class="results-switch_header j-results-switcher"
-                                    data-url="/msk/restaurants/restaurant_list/" data-view="cards">
-                                    <li class="results-switch_item results-switch_select">
-                                        <span data-view="" class="results-switch_link">карточками</span>
-                                    </li>
-                                    <li class="results-switch_item">
-                                        <span data-view="list" class="results-switch_link">списком</span>
-                                    </li>
-                                    <li class="results-switch_item">
-                                        <span data-view="map" class="results-switch_link ">на карте</span>
-                                    </li>
-                                </ul>
                                 <div class="results_text">
-                                    <h2>Найдено {{allBarsCount | json}} ресторана</h2>
+                                    <h2>Найдено {{allBarsCount}} ресторана</h2>
                                 </div>
                             </div>
                         </div>
@@ -95,27 +83,7 @@
                                 <li class="list_item j-first-item" ng-repeat="bar in allBars">
                                     <!-- шаблон для отображения карточками -->
                                     <span class="places_cards">
-                                        <!--<a href="/msk/restaurant/40206/" class="places_link link" sl-processed="1">-->
-                                            <!--<div class="places_top">-->
-                                                <!--<span class="places_img">-->
-                                                    <!--<i class="fake-cover _big"></i>-->
-                                                <!--</span>-->
-                                            <!--</div>-->
-                                        <!--</a>-->
-                                        <!--<span class="places_mini_favorite s-place_icons" data-params="{&quot;rId&quot;:40206}">-->
-                                            <!--<i class="icon_favorite j-favorite _base-layer_black_fill _line-heart_white _small s-tooltip s-favorite-icon j-not-count"-->
-                                            <!--data-title="В&nbsp;избранное" data-rid="40206" data-rest-name="Burger King"-->
-                                            <!--data-uid=""></i>-->
-                                        <!--</span>-->
                                         <div class="places_info">
-                                            <!--<ul class="places_ratings">-->
-                                                <!--<li class="places_ratings_item">-->
-                                                    <!--<div class="rating _small _text-black  _gray  s-tooltip" data-title="Недостаточно голосов">-->
-                                                        <!--<div class="rating_number _none">-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</li>-->
-                                            <!--</ul>-->
                                             <h2 class="places_title">
                                                 <a href="/msk/restaurant/{{bar.id}}/" class="places_link" sl-processed="1">
                                                     <span class="places_name">{{bar.name}}</span>
@@ -134,15 +102,6 @@
                                                     <span class="places_phone">{{bar.publicPhone}}</span>
                                                 </span>
                                             </a>
-                                            <!--<div class="places_ratings_item _range">-->
-                                                <!--<span class="range s-tooltip" data-title="Средний чек - До 700 рублей">-->
-                                                    <!--<i class="range_letter"></i>-->
-                                                    <!--<i class="range_letter _grey"></i>-->
-                                                    <!--<i class="range_letter _grey"></i>-->
-                                                    <!--<i class="range_letter _grey"></i>-->
-                                                    <!--<i class="range_letter _grey"></i>-->
-                                                <!--</span>-->
-                                            <!--</div>-->
                                         </div>
                                     </span>
                                 </li>
