@@ -10,4 +10,10 @@ public interface BarService {
     Long getCount();
 
     List<BarEntity> findBarByName(String name);
+
+    List<BarEntity> searchByName(String name);
+
+    List<BarEntity> searchByAddress(String address);
+
+    List<BarEntity> searchByDistrict(String district);
 }

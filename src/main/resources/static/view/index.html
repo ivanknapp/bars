@@ -4,29 +4,163 @@
     <meta charset="utf-8">
     <title>Поиск</title>
 </head>
-<body ng-app="bar">
-<div class="container" ng-controller="SearchController">
-    <div class="row">
-        <h1>Бары Москвы</h1>
-        <input type="text"
-               ng-model="barName"
-               class="input-sm custom-width spacing"
-               placeholder="Поиск по названию или расположению"
-        />
-        <button ng-click="findBarByName()" class="btn btn-sm btn-info">НАЙТИ</button>
+<body class="page page_index  page_no-touch" ng-app="bar">
+    <div class="page-wrapper" ng-controller="SearchController">
+        <div class="page_container _topline">
+            <header class="header">
+                <div class="banner _Billboard"></div>
+                <section class="topline">
+                    <div class="topline-top"></div>
+                    <div class="topline-bottom">
+                        <nav>
+                                <span class="topline-bottom-link">
+                                    <a href="https://www.afisha.ru/msk/cinema/" sl-processed="1">КИНО</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                <a href="https://www.afisha.ru/msk/concerts/" sl-processed="1">КОНЦЕРТЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="https://www.afisha.ru/msk/theatre/" sl-processed="1">ТЕАТР</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="https://www.afisha.ru/msk/exhibitions/" sl-processed="1">ВЫСТАВКИ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="https://www.afisha.ru/msk/kids/" sl-processed="1">ДЕТИ</a>
+                                </span>
+                            <span class="topline-bottom-link _active">
+                                    <a href="https://www.afisha.ru/msk/restaurants/" sl-processed="1">РЕСТОРАНЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="https://www.afisha.ru/msk/quests/" sl-processed="1">КВЕСТЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="https://www.afisha.ru/selection/" sl-processed="1">ПОДБОРКИ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="https://www.afisha.ru/" sl-processed="1">ВСЕ</a>
+                                </span>
+                        </nav>
+                        <span class="topline-bottom-link _choice">
+                                <a href="/msk/restaurants/restaurant_list/thebest/" class="topline-bottom-choice"
+                                   data-text="Лучшее в Москве" sl-processed="1">
+                                    <i class="label _normal _white"></i>
+                                </a>
+                            </span>
+                    </div>
+                </section>
+            </header>
+        </div>
+        <div class="page_container _search">
+            <div class="rootblock" id="suggest-root">
+                <div class="c8e9d27b__form-fonts">
+                    <form class="_5b3132fe__form-form">
+                        <input type="text" class="_642e2d74__input-input"
+                               placeholder="Поиск по названию, типу кухни или расположению" value="" ng-model="barName">
+                        <button class="c6c8b68d__button-button" type="submit" ng-click="findBarByName()">найти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="page_container">
+                <div class="page_container_left _container-search">
+                    <div class="search_header">
+                        <div class="search_header_text">
+                            <h1>Кафе и рестораны Москвы</h1>
+                        </div>
+                    </div>
+                    <section class="search j-list-container">
+                        <div class="page_container">
+                            <div class="results">
+                                <ul class="results-switch_header j-results-switcher"
+                                    data-url="/msk/restaurants/restaurant_list/" data-view="cards">
+                                    <li class="results-switch_item results-switch_select">
+                                        <span data-view="" class="results-switch_link">карточками</span>
+                                    </li>
+                                    <li class="results-switch_item">
+                                        <span data-view="list" class="results-switch_link">списком</span>
+                                    </li>
+                                    <li class="results-switch_item">
+                                        <span data-view="map" class="results-switch_link ">на карте</span>
+                                    </li>
+                                </ul>
+                                <div class="results_text">
+                                    <h2>Найдено {{allBarsCount | json}} ресторана</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <section class="search_results">
+                            <ul class="list s-search-rests j-list-wrapper _cards " data-minwidth="630">
+                                <li class="list_item j-first-item" ng-repeat="bar in allBars">
+                                    <!-- шаблон для отображения карточками -->
+                                    <span class="places_cards">
+                                        <!--<a href="/msk/restaurant/40206/" class="places_link link" sl-processed="1">-->
+                                            <!--<div class="places_top">-->
+                                                <!--<span class="places_img">-->
+                                                    <!--<i class="fake-cover _big"></i>-->
+                                                <!--</span>-->
+                                            <!--</div>-->
+                                        <!--</a>-->
+                                        <!--<span class="places_mini_favorite s-place_icons" data-params="{&quot;rId&quot;:40206}">-->
+                                            <!--<i class="icon_favorite j-favorite _base-layer_black_fill _line-heart_white _small s-tooltip s-favorite-icon j-not-count"-->
+                                            <!--data-title="В&nbsp;избранное" data-rid="40206" data-rest-name="Burger King"-->
+                                            <!--data-uid=""></i>-->
+                                        <!--</span>-->
+                                        <div class="places_info">
+                                            <!--<ul class="places_ratings">-->
+                                                <!--<li class="places_ratings_item">-->
+                                                    <!--<div class="rating _small _text-black  _gray  s-tooltip" data-title="Недостаточно голосов">-->
+                                                        <!--<div class="rating_number _none">-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</li>-->
+                                            <!--</ul>-->
+                                            <h2 class="places_title">
+                                                <a href="/msk/restaurant/{{bar.id}}/" class="places_link" sl-processed="1">
+                                                    <span class="places_name">{{bar.name}}</span>
+                                                </a>
+                                                <ul class="places-tag_items">
+                                                    <li class="places_cuisine places-tag_item">
+                                                        <a href="/msk/restaurants/restaurant_list/fastfood/" sl-processed="1">Бар</a>
+                                                    </li>
+                                                </ul>
+                                            </h2>
+                                            <span class="places_contact">Москва</span>
+                                            <a href="/msk/restaurant/{{bar.id}}/" class="places_link" sl-processed="1">
+                                                <span class="places_contact">
+                                                    <span class="places_address">{{bar.address}}</span>
+                                                    <span class="places_metro">{{bar.district}}</span>
+                                                    <span class="places_phone">{{bar.publicPhone}}</span>
+                                                </span>
+                                            </a>
+                                            <!--<div class="places_ratings_item _range">-->
+                                                <!--<span class="range s-tooltip" data-title="Средний чек - До 700 рублей">-->
+                                                    <!--<i class="range_letter"></i>-->
+                                                    <!--<i class="range_letter _grey"></i>-->
+                                                    <!--<i class="range_letter _grey"></i>-->
+                                                    <!--<i class="range_letter _grey"></i>-->
+                                                    <!--<i class="range_letter _grey"></i>-->
+                                                <!--</span>-->
+                                            <!--</div>-->
+                                        </div>
+                                    </span>
+                                </li>
+                            </ul>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </div >
     </div>
-    <div class="row">
-        <p>{{allBarsCount | json}}</p>
-        <p>{{allBars | json}}</p>
-    </div>
-    </div>
-</div>
 </body>
-<script src="js/lib/angular.min.js"></script>
-<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="../js/lib/angular.min.js"></script>
+<script src="../js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
 <script src="../js/app/app.js"></script>
 <script src="../js/app/BarService.js"></script>
 <script src="../js/app/SearchController.js"></script>
-<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
-<link rel="stylesheet" href="css/app/app.css"/>
+<link rel="stylesheet" href="../css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="../css/app/app.css"/>
+<link rel="stylesheet" href="../css/app/app1.css"/>
+<link rel="stylesheet" href="../css/app/header.css"/>
 </html>
