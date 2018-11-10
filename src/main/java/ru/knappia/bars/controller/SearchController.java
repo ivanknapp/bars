@@ -9,6 +9,8 @@ import ru.knappia.bars.repository.BarEntity;
 import ru.knappia.bars.service.BarService;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @RequestMapping("/api")
@@ -28,9 +30,15 @@ public class SearchController {
         return barService.getCount();
     }
 
-    @RequestMapping(value = "/findBarByName/{barName}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/findBarByName/{barName}", method = RequestMethod.GET)
     public List<BarEntity> getBarByName(@PathVariable String barName) {
-        return barService.findBarByName(barName);
+        return Stream.concat(
+                barService.searchByName(barName).stream(),
+                Stream.concat(barService.searchByAddress(barName).stream(),
+                        barService.searchByDistrict(barName).stream())
+        )
+                .distinct()
+                .collect(Collectors.toList());
     }
 
 }
