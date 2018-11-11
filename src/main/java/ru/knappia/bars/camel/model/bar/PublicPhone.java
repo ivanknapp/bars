@@ -1,4 +1,4 @@
-package ru.knappia.bars.camel.model;
+package ru.knappia.bars.camel.model.bar;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
