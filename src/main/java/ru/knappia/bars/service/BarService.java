@@ -1,19 +1,19 @@
 package ru.knappia.bars.service;
 
-import ru.knappia.bars.repository.BarEntity;
+import ru.knappia.bars.repository.LegalEntity;
 
 import java.util.List;
 
 public interface BarService {
-    List<BarEntity> getAllBars();
+    List<LegalEntity> getAllBars();
 
     Long getCount();
 
-    List<BarEntity> findBarByName(String name);
+    List<LegalEntity> findBarByName(String name);
 
-    List<BarEntity> searchByName(String name);
+    List<LegalEntity> searchByName(String name);
 
-    List<BarEntity> searchByAddress(String address);
+    List<LegalEntity> searchByAddress(String address);
 
-    List<BarEntity> searchByDistrict(String district);
+    List<LegalEntity> searchByDistrict(String district);
 }

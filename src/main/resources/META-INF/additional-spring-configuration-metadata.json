@@ -4,5 +4,35 @@
       "name": "bars.download",
       "type": "java.lang.String",
       "description": "bars download folder"
-  }
-] }
+    },
+    {
+      "name": "cafe.download",
+      "type": "java.lang.String",
+      "description": "Description for cafe.download."
+    },
+    {
+      "name": "seda.aggregation",
+      "type": "java.lang.String",
+      "description": "Description for seda.aggregation."
+    },
+    {
+      "name": "seda.aggregation.threads",
+      "type": "java.lang.String",
+      "description": "Description for seda.aggregation.threads."
+    },
+    {
+      "name": "seda.aggregation.size",
+      "type": "java.lang.String",
+      "description": "Description for seda.aggregation.size."
+    },
+    {
+      "name": "restaraunts.download",
+      "type": "java.lang.String",
+      "description": "Description for restaraunts.download."
+    },
+    {
+      "name": "coffeehouses.download",
+      "type": "java.lang.String",
+      "description": "Description for coffeehouses.download."
+    }
+  ] }

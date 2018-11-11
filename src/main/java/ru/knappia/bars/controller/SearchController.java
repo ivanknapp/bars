@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ru.knappia.bars.repository.BarEntity;
+import ru.knappia.bars.repository.LegalEntity;
 import ru.knappia.bars.service.BarService;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class SearchController {
     BarService barService;
 
     @RequestMapping("/getAllBars")
-    public List<BarEntity> getAllUsers() {
+    public List<LegalEntity> getAllUsers() {
         return barService.getAllBars();
     }
 
@@ -31,7 +31,7 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/findBarByName/{barName}", method = RequestMethod.GET)
-    public List<BarEntity> getBarByName(@PathVariable String barName) {
+    public List<LegalEntity> getBarByName(@PathVariable String barName) {
         return Stream.concat(
                 barService.searchByName(barName).stream(),
                 Stream.concat(barService.searchByAddress(barName).stream(),

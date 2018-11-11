@@ -19,9 +19,19 @@ spring:
       prefix: /view/
       suffix: .html
 
+seda:
+  aggregation:
+    threads: 4
+    size: 1000
 
 bars:
   download: D:/data/bars
+cafe:
+  download: D:/data/cafe
+restaurants:
+  download: D:/data/restaurants
+coffeehouses:
+  download: D:/data/coffeehouses
 
 server:
   port: 8080

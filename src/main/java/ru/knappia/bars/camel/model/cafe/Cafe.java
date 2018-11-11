@@ -1,15 +1,16 @@
-package ru.knappia.bars.camel.model;
+package ru.knappia.bars.camel.model.cafe;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
+import ru.knappia.bars.camel.model.bar.PublicPhone;
 
-import java.util.List;
 
 /**
- * Бары
+ * Кафе
  *
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -33,7 +34,7 @@ import java.util.List;
         "signature_date"
 })
 @Data
-public class Bar {
+public class Cafe {
 
     /**
      * Долгота в WGS-84
@@ -42,7 +43,7 @@ public class Bar {
      */
     @JsonProperty("Longitude_WGS84")
     @JsonPropertyDescription("Долгота в WGS-84")
-    private String longitudeWGS84;
+    public String longitudeWGS84;
     /**
      * Число посадочных мест
      * (Required)
@@ -50,7 +51,7 @@ public class Bar {
      */
     @JsonProperty("SeatsCount")
     @JsonPropertyDescription("Число посадочных мест")
-    private Integer seatsCount;
+    public Integer seatsCount;
     /**
      * Широта в WGS-84
      * (Required)
@@ -58,7 +59,7 @@ public class Bar {
      */
     @JsonProperty("Latitude_WGS84")
     @JsonPropertyDescription("Широта в WGS-84")
-    private String latitudeWGS84;
+    public String latitudeWGS84;
     /**
      * global_id
      * (Required)
@@ -66,7 +67,7 @@ public class Bar {
      */
     @JsonProperty("global_id")
     @JsonPropertyDescription("global_id")
-    private Integer globalId;
+    public Integer globalId;
     /**
      * Вид объекта
      * (Required)
@@ -74,7 +75,7 @@ public class Bar {
      */
     @JsonProperty("TypeObject")
     @JsonPropertyDescription("Вид объекта")
-    private String typeObject;
+    public String typeString;
     /**
      * Показатель социальных льгот
      * (Required)
@@ -82,7 +83,7 @@ public class Bar {
      */
     @JsonProperty("SocialPrivileges")
     @JsonPropertyDescription("Показатель социальных льгот")
-    private String socialPrivileges;
+    public String socialPrivileges;
     /**
      * Административный округ
      * (Required)
@@ -90,7 +91,7 @@ public class Bar {
      */
     @JsonProperty("AdmArea")
     @JsonPropertyDescription("Административный округ")
-    private String admArea;
+    public String admArea;
     /**
      * Контактный телефон
      * (Required)
@@ -98,7 +99,7 @@ public class Bar {
      */
     @JsonProperty("PublicPhone")
     @JsonPropertyDescription("Контактный телефон")
-    private List<PublicPhone> publicPhone;
+    public List<PublicPhone> publicPhone;
     /**
      * Наименование
      * (Required)
@@ -106,7 +107,7 @@ public class Bar {
      */
     @JsonProperty("Name")
     @JsonPropertyDescription("Название")
-    private String name;
+    public String name;
     /**
      * is_deleted
      * (Required)
@@ -114,14 +115,14 @@ public class Bar {
      */
     @JsonProperty("is_deleted")
     @JsonPropertyDescription("is_deleted")
-    private Boolean isDeleted;
+    public Boolean isDeleted;
     /**
      * system_object_id
      *
      */
     @JsonProperty("system_object_id")
     @JsonPropertyDescription("system_object_id")
-    private String systemObjectId;
+    public String systemObjectId;
     /**
      * Район
      * (Required)
@@ -129,14 +130,14 @@ public class Bar {
      */
     @JsonProperty("District")
     @JsonPropertyDescription("Район")
-    private String district;
+    public String district;
     /**
      * Название управляющей компании
      *
      */
     @JsonProperty("OperatingCompany")
     @JsonPropertyDescription("Название управляющей компании")
-    private String operatingCompany;
+    public String operatingCompany;
     /**
      * Адрес
      * (Required)
@@ -144,7 +145,7 @@ public class Bar {
      */
     @JsonProperty("Address")
     @JsonPropertyDescription("Адрес")
-    private String address;
+    public String address;
     /**
      * Код
      * (Required)
@@ -152,7 +153,7 @@ public class Bar {
      */
     @JsonProperty("ID")
     @JsonPropertyDescription("Код")
-    private String iD;
+    public String iD;
     /**
      * Является сетевым
      * (Required)
@@ -160,36 +161,13 @@ public class Bar {
      */
     @JsonProperty("IsNetObject")
     @JsonPropertyDescription("Является сетевым")
-    private String isNetObject;
+    public String isNetObject;
     /**
      * signature_date
      *
      */
     @JsonProperty("signature_date")
     @JsonPropertyDescription("signature_date")
-    private String signatureDate;
+    public String signatureDate;
 
-
-    @Override
-    public String toString() {
-        return "Bar{" +
-                "longitudeWGS84='" + longitudeWGS84 + '\'' +
-                ", seatsCount=" + seatsCount +
-                ", latitudeWGS84=" + latitudeWGS84 +
-                ", globalId=" + globalId +
-                ", typeObject=" + typeObject +
-                ", socialPrivileges=" + socialPrivileges +
-                ", admArea=" + admArea +
-                ", publicPhone=" + publicPhone +
-                ", name=" + name +
-                ", isDeleted=" + isDeleted +
-                ", systemObjectId=" + systemObjectId +
-                ", district=" + district +
-                ", operatingCompany=" + operatingCompany +
-                ", address=" + address +
-                ", iD=" + iD +
-                ", isNetObject=" + isNetObject +
-                ", signatureDate=" + signatureDate +
-                '}';
-    }
 }
