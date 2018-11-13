@@ -11,7 +11,7 @@ spring:
       maximum-pool-size: 1
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
     show-sql: true
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
   mvc:
@@ -25,13 +25,13 @@ seda:
     size: 1000
 
 bars:
-  download: D:/data/bars
+  download: /data/bars
 cafe:
-  download: D:/data/cafe
+  download: /data/cafe
 restaurants:
-  download: D:/data/restaurants
+  download: /data/restaurants
 coffeehouses:
-  download: D:/data/coffeehouses
+  download: /data/coffeehouses
 
 server:
   port: 8080
