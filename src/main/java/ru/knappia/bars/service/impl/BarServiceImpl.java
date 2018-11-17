@@ -8,44 +8,51 @@ import ru.knappia.bars.service.BarService;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BarServiceImpl implements BarService {
     @Autowired
-    LegalEntityRepository barEntityRepository;
+    LegalEntityRepository legalEntityRepository;
 
     @Override
     public List<LegalEntity> getAllBars() {
-        return barEntityRepository.findAll();
+        return legalEntityRepository.findAll();
     }
 
     @Override
     public Long getCount() {
-        return barEntityRepository.count();
+        return legalEntityRepository.count();
     }
 
     @Override
     public List<LegalEntity> findBarByName(String name) {
-        return barEntityRepository.findAllByName(name);
+        return legalEntityRepository.findAllByName(name);
     }
 
     @Override
     public List<LegalEntity> searchByName(String name) {
         final String namePattern = makeSearchPattern(name);
-        return barEntityRepository.searchByName(namePattern);
+        return legalEntityRepository.searchByName(namePattern);
     }
 
     @Override
     public List<LegalEntity> searchByAddress(String address) {
         final String addressPattern = makeSearchPattern(address);
-        return barEntityRepository.searchByAddress(addressPattern);
+        return legalEntityRepository.searchByAddress(addressPattern);
     }
 
     @Override
     public List<LegalEntity> searchByDistrict(String district) {
         final String districtPattern = makeSearchPattern(district);
-        return barEntityRepository.searchByDistrict(districtPattern);
+        return legalEntityRepository.searchByDistrict(districtPattern);
     }
+
+    @Override
+    public Optional<LegalEntity> findBarById(Integer id) {
+        return legalEntityRepository.findById(id);
+    }
+
     @NotNull
     private String makeSearchPattern(String string){
         return string

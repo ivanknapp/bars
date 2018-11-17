@@ -41,4 +41,9 @@ public class SearchController {
                 .collect(Collectors.toList());
     }
 
+    @RequestMapping(value = "/restaurant/{barId}", method = RequestMethod.GET)
+    public LegalEntity getBarById(@PathVariable Integer barId) {
+        return barService.findBarById(barId).orElseThrow(IllegalArgumentException::new);
+    }
+
 }
