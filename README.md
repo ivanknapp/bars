@@ -1,5 +1,5 @@
-"# bars" 
-Show bars,cafe,eatzone at moscow
-search engine postgres fulltextsearch
-db postgres
-parse data - apache camel
+Show bars,cafe,eatzone at moscow. 
+Search engine postgres fulltextsearch. 
+Database postgres. 
+Parse data - apache camel.
+Web - angular
