@@ -8,6 +8,7 @@ import ru.knappia.bars.model.request.SearchRequest;
 import ru.knappia.bars.repository.Bar;
 import ru.knappia.bars.service.BarService;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,22 +22,17 @@ public class SearchController {
     @Autowired
     BarService barService;
 
-//    @RequestMapping("/getAllBars")
-//    public List<Bar> getAllUsers() {
-//        return barService.getAllBars();
-//    }
-
     @RequestMapping("/getCount")
     public Long getCount() {
         return barService.getCount();
     }
 
-    @GetMapping("/sample")
-    public String showForm(Model model) {
-        List<Bar> allBars = barService.getAllBars();
-
-        model.addAttribute("bar", allBars.get(0));
-        return "sample";
+    @RequestMapping("/home")
+    public String home(Model theModel) {
+        theModel.addAttribute("search", new SearchRequest());
+        theModel.addAttribute("allBars", new ArrayList<>());
+        theModel.addAttribute("count", barService.getCount());
+        return "search";
     }
 
     @GetMapping("/getAllBars")
@@ -57,9 +53,10 @@ public class SearchController {
         )
                 .distinct()
                 .collect(Collectors.toList());
+        theModel.addAttribute("search", new SearchRequest(){{setQuery(query);}});
         theModel.addAttribute("allBars", bars);
-        theModel.addAttribute("search", bars);
-        return "redirect:/home";
+        theModel.addAttribute("count", bars.size());
+        return "search";
     }
 
     @RequestMapping(value = "/restaurant/{barId}", method = RequestMethod.GET)

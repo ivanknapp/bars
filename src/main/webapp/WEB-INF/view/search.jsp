@@ -59,7 +59,7 @@
     <div class="page_container _search">
         <div class="rootblock" id="suggest-root">
             <div class="c8e9d27b__form-fonts">
-                <form:form action="api/findBarByName" cssClass="_5b3132fe__form-form" method="post" modelAttribute="search">
+                <form:form action="findBarByName" cssClass="_5b3132fe__form-form" method="post" modelAttribute="search">
                     <form:input path="query" cssClass="_642e2d74__input-input"/>
                     <div class="c6c8b68d__button-button">
                         <form:button>найти</form:button>
@@ -82,7 +82,7 @@
                     <div class="page_container">
                         <div class="results">
                             <div class="results_text">
-                                <h2>Найдено ${allBars}.length() заведений</h2>
+                                <h2>Найдено ${count} заведений</h2>
                             </div>
                         </div>
                     </div>
