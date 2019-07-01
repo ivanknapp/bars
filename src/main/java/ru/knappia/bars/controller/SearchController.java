@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.knappia.bars.model.request.SearchRequest;
 import ru.knappia.bars.repository.Bar;
 import ru.knappia.bars.service.BarService;
 
@@ -46,15 +47,19 @@ public class SearchController {
         return "allBars";
     }
 
-    @RequestMapping(value = "/findBarByName/{barName}", method = RequestMethod.GET)
-    public List<Bar> getBarByName(@PathVariable String barName) {
-        return Stream.concat(
-                barService.searchByName(barName).stream(),
-                Stream.concat(barService.searchByAddress(barName).stream(),
-                        barService.searchByDistrict(barName).stream())
+    @PostMapping(value = "/findBarByName")
+    public String getBarByName(@ModelAttribute("search") SearchRequest searchRequest, Model theModel) {
+        final String query = searchRequest.getQuery();
+        List<Bar> bars = Stream.concat(
+                barService.searchByName(query).stream(),
+                Stream.concat(barService.searchByAddress(query).stream(),
+                        barService.searchByDistrict(query).stream())
         )
                 .distinct()
                 .collect(Collectors.toList());
+        theModel.addAttribute("allBars", bars);
+        theModel.addAttribute("search", bars);
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/restaurant/{barId}", method = RequestMethod.GET)
