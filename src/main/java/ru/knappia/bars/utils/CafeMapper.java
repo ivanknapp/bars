@@ -2,7 +2,7 @@ package ru.knappia.bars.utils;
 
 import ru.knappia.bars.camel.model.bar.PublicPhone;
 import ru.knappia.bars.camel.model.cafe.Cafe;
-import ru.knappia.bars.repository.LegalEntity;
+import ru.knappia.bars.repository.Bar;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -13,7 +13,7 @@ public class CafeMapper implements Function<Object, Object> {
     public Object apply(Object object) {
         if (object instanceof Cafe) {
             final Cafe cafe = (Cafe) object;
-            final LegalEntity entity = new LegalEntity();
+            final Bar entity = new Bar();
 
             entity.setType(cafe.getTypeString());
             entity.setId(cafe.getGlobalId());

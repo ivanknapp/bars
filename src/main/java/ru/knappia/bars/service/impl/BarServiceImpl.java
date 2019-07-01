@@ -2,8 +2,8 @@ package ru.knappia.bars.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.knappia.bars.repository.LegalEntity;
-import ru.knappia.bars.repository.LegalEntityRepository;
+import ru.knappia.bars.repository.Bar;
+import ru.knappia.bars.repository.BarRepository;
 import ru.knappia.bars.service.BarService;
 
 import javax.validation.constraints.NotNull;
@@ -13,44 +13,44 @@ import java.util.Optional;
 @Service
 public class BarServiceImpl implements BarService {
     @Autowired
-    LegalEntityRepository legalEntityRepository;
+    BarRepository barRepository;
 
     @Override
-    public List<LegalEntity> getAllBars() {
-        return legalEntityRepository.findAll();
+    public List<Bar> getAllBars() {
+        return barRepository.findAll();
     }
 
     @Override
     public Long getCount() {
-        return legalEntityRepository.count();
+        return barRepository.count();
     }
 
     @Override
-    public List<LegalEntity> findBarByName(String name) {
-        return legalEntityRepository.findAllByName(name);
+    public List<Bar> findBarByName(String name) {
+        return barRepository.findAllByName(name);
     }
 
     @Override
-    public List<LegalEntity> searchByName(String name) {
+    public List<Bar> searchByName(String name) {
         final String namePattern = makeSearchPattern(name);
-        return legalEntityRepository.searchByName(namePattern);
+        return barRepository.searchByName(namePattern);
     }
 
     @Override
-    public List<LegalEntity> searchByAddress(String address) {
+    public List<Bar> searchByAddress(String address) {
         final String addressPattern = makeSearchPattern(address);
-        return legalEntityRepository.searchByAddress(addressPattern);
+        return barRepository.searchByAddress(addressPattern);
     }
 
     @Override
-    public List<LegalEntity> searchByDistrict(String district) {
+    public List<Bar> searchByDistrict(String district) {
         final String districtPattern = makeSearchPattern(district);
-        return legalEntityRepository.searchByDistrict(districtPattern);
+        return barRepository.searchByDistrict(districtPattern);
     }
 
     @Override
-    public Optional<LegalEntity> findBarById(Integer id) {
-        return legalEntityRepository.findById(id);
+    public Optional<Bar> findBarById(Integer id) {
+        return barRepository.findById(id);
     }
 
     @NotNull
@@ -60,5 +60,10 @@ public class BarServiceImpl implements BarService {
                 .replaceAll("\\s+", " ")
                 .trim()
                 .replaceAll("\\s", " <-> ");
+    }
+
+    @Override
+    public List<Bar> findBarByType(String type) {
+        return barRepository.findAllByType(type);
     }
 }

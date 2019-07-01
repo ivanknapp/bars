@@ -2,11 +2,13 @@ package ru.knappia.bars;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+@EnableWebMvc
 @SpringBootApplication
 public class MainApp {
 
-    public static void main(String... args){
+    public static void main(String... args) {
         SpringApplication.run(MainApp.class, args);
     }
 }
