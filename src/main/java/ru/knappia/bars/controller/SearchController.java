@@ -22,11 +22,6 @@ public class SearchController {
     @Autowired
     BarService barService;
 
-    @RequestMapping("/getCount")
-    public Long getCount() {
-        return barService.getCount();
-    }
-
     @RequestMapping("/home")
     public String home(Model theModel) {
         theModel.addAttribute("search", new SearchRequest());
@@ -43,7 +38,7 @@ public class SearchController {
         return "allBars";
     }
 
-    @PostMapping(value = "/findBarByName")
+    @PostMapping(value = "/search")
     public String getBarByName(@ModelAttribute("search") SearchRequest searchRequest, Model theModel) {
         final String query = searchRequest.getQuery();
         List<Bar> bars = Stream.concat(
@@ -66,7 +61,14 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/restaurants/{barType}", method = RequestMethod.GET)
-    public List<Bar> getBarById(@PathVariable String barType) {
-        return barService.findBarByType(barType);
+    public String getBarById(@PathVariable String barType, Model theModel) {
+
+        List<Bar> bars = barService.findBarByType(barType);
+
+        theModel.addAttribute("search", new SearchRequest(){{setQuery(barType);}});
+        theModel.addAttribute("allBars", bars);
+        theModel.addAttribute("count", bars.size());
+
+        return "search";
     }
 }
