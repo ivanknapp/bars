@@ -60,8 +60,9 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/restaurant/{barId}", method = RequestMethod.GET)
-    public Bar getBarById(@PathVariable Integer barId) {
-        return barService.findBarById(barId).orElseThrow(IllegalArgumentException::new);
+    public String getBarById(@PathVariable Integer barId, Model theModel) {
+        theModel.addAttribute("restaraunt", barService.findBarById(barId).orElseThrow(IllegalArgumentException::new));
+        return "restaraunt_page";
     }
 
     @RequestMapping(value = "/restaurants/{barType}", method = RequestMethod.GET)

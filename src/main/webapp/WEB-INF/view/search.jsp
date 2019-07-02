@@ -88,13 +88,13 @@
                     </div>
                     <section class="search_results">
                         <ul class="list s-search-rests j-list-wrapper _cards " data-minwidth="630">
-                            <li class="list_item j-first-item">
-                                <c:forEach var="bar" items="${allBars}">
+                            <c:forEach var="bar" items="${allBars}">
+                                <li class="list_item j-first-item">
                                     <!-- шаблон для отображения карточками -->
                                     <span class="places_cards">
                                         <div class="places_info">
                                             <h2 class="places_title">
-                                                <a href="#findById/${bar.id}" class="places_link">
+                                                <a href="/api/restaurant/${bar.id}" class="places_link">
                                                     <span class="places_name">${bar.name}</span>
                                                 </a>
                                                 <ul class="places-tag_items">
@@ -114,9 +114,8 @@
                                             </a>
                                         </div>
                                     </span>
-                                </c:forEach>
-
-                            </li>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </section>
                 </section>
