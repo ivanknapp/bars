@@ -1,9 +1,11 @@
-'use strict'
+'use strict';
 
 var barApp = angular.module('bar', ['ui.bootstrap', 'bar.controllers',
     'bar.services']);
 barApp.constant("CONSTANTS", {
     getAllBars: "/api/getAllBars",
     getAllBarsCount: "/api/getCount",
-    findBarByName: "/api/findBarByName/"
+    findBarByName: "/api/findBarByName/",
+    findBarById: "/api/restaurant/",
+    findBarByType: "/api/restaurants/"
 });

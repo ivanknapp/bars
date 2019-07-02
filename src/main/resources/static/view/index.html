@@ -5,6 +5,7 @@
     <title>Поиск</title>
 </head>
 <body class="page page_index  page_no-touch" ng-app="bar">
+<div ng-view></div>
 <div class="page-wrapper" ng-controller="SearchController">
     <div class="page_container _topline">
         <header class="header">
@@ -83,28 +84,28 @@
                             <li class="list_item j-first-item" ng-repeat="bar in allBars">
                                 <!-- шаблон для отображения карточками -->
                                 <span class="places_cards">
-                                        <div class="places_info">
-                                            <h2 class="places_title">
-                                                <a href="/api/restaurant/{{bar.id}}/" class="places_link">
-                                                    <span class="places_name">{{bar.name}}</span>
-                                                </a>
-                                                <ul class="places-tag_items">
-                                                    <li class="places_cuisine places-tag_item">
-                                                        <a href="/msk/restaurants/restaurant_list/fastfood/">{{bar.type}}</a>
-                                                    </li>
-                                                </ul>
-                                            </h2>
-                                            <span class="places_contact">Москва</span>
-                                            <a href="/api/restaurant/{{bar.id}}/" class="places_link">
-                                                <span class="places_contact">
-                                                    <span class="places_address">{{bar.address}}</span>
-                                                    <span class="places_metro">{{bar.district}}</span>
-                                                    <span class="places_phone">{{bar.publicPhone}}</span><br>
-                                                    <span class="places_sit_count">Посадочных мест {{bar.sitCount}}</span>
-                                                </span>
+                                    <div class="places_info">
+                                        <h2 class="places_title">
+                                            <a href="#findById/169375308" class="places_link">
+                                                <span class="places_name">{{bar.name}}</span>
                                             </a>
-                                        </div>
-                                    </span>
+                                            <ul class="places-tag_items">
+                                                <li class="places_cuisine places-tag_item">
+                                                    <a href="/api/restaurants/{{bar.type}}">{{bar.type}}</a>
+                                                </li>
+                                            </ul>
+                                        </h2>
+                                        <span class="places_contact">Москва</span>
+                                        <a href="/api/restaurant/{{bar.id}}" class="places_link">
+                                            <span class="places_contact">
+                                                <span class="places_address">{{bar.address}}</span>
+                                                <span class="places_metro">{{bar.district}}</span>
+                                                <span class="places_phone">{{bar.publicPhone}}</span><br>
+                                                <span class="places_sit_count">Посадочных мест {{bar.sitCount}}</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </span>
                             </li>
                         </ul>
                     </section>
@@ -114,11 +115,14 @@
     </div>
 </div>
 </body>
+
 <script src="../js/lib/angular.min.js"></script>
 <script src="../js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="../js/lib/angular-route.min.js"></script>
 <script src="../js/app/app.js"></script>
 <script src="../js/app/BarService.js"></script>
 <script src="../js/app/SearchController.js"></script>
+
 <link rel="stylesheet" href="../css/lib/bootstrap.min.css"/>
 <link rel="stylesheet" href="../css/app/header.css"/>
 </html>

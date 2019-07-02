@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('bar.services', []).factory('BarService',
     ["$http", "CONSTANTS", function ($http, CONSTANTS) {
@@ -11,6 +11,9 @@ angular.module('bar.services', []).factory('BarService',
         };
         service.getBarByName = function (barName) {
             return $http.get(CONSTANTS.findBarByName + barName);
+        };
+        service.getBarById = function (id) {
+            return $http.get(CONSTANTS.findBarById + id);
         };
         return service;
     }]);
