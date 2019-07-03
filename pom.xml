@@ -7,7 +7,7 @@
     <groupId>ru.knappia.camel</groupId>
     <artifactId>bars</artifactId>
     <packaging>jar</packaging>
-    <version>1.7.0</version>
+    <version>2.0.0</version>
 
     <name>bars</name>
 
@@ -73,12 +73,6 @@
             <artifactId>camel-spring-boot-starter</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-configuration-processor</artifactId>-->
-            <!--<optional>true</optional>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -106,15 +100,8 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
     </dependencies>
 
