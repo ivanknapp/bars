@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Поиск</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+</head>
+<body class="page page_index  page_no-touch">
+    <div class="page_wrapper ">
+        <div class="page_container _topline">
+            <header class="header">
+                <div class="banner _Billboard"></div>
+                <section class="topline">
+                    <div class="topline-top"></div>
+                    <div class="topline-bottom">
+                        <nav>
+                                <span class="topline-bottom-link">
+                                    <a href="/msk/cinema/">КИНО</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/concerts/">КОНЦЕРТЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/theatre/">ТЕАТР</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/exhibitions/">ВЫСТАВКИ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/kids/">ДЕТИ</a>
+                                </span>
+                            <span class="topline-bottom-link _active">
+                                    <a href="/msk/restaurants/">РЕСТОРАНЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/quests/">КВЕСТЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/selection/">ПОДБОРКИ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/">ВСЕ</a>
+                                </span>
+                        </nav>
+                        <span class="topline-bottom-link _choice">
+                                <a href="/msk/restaurants/restaurant_list/thebest/" class="topline-bottom-choice"
+                                   data-text="Лучшее в Москве">
+                                    <i class="label _normal _white"></i>
+                                </a>
+                            </span>
+                    </div>
+                </section>
+            </header>
+        </div>
+        <div class="page_container _search">
+            <div class="rootblock" id="suggest-root">
+                <div class="c8e9d27b__form-fonts">
+                    <form action="#" th:action="@{/search}" th:object="${searchRequest}" method="post" class="_5b3132fe__form-form">
+                        <input type="text" th:field="*{query}" class="_642e2d74__input-input" id="query" placeholder="Поиск по названию, типу кухни или расположению">
+                        <span th:if="${#fields.hasErrors('query')}" th:errors="*{query}" class="text-danger"></span>
+                        <input type="submit" class="c6c8b68d__button-button" value="найти">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h2 th:text="${restaraunt}"></h2>
+        <!--content-->
+        <div id="content">
+            <!--<section class="place">-->
+                <div class="page_container">
+                    <!--<section class="info-section">-->
+                        <div class="page_container_left">
+                            <!-- Блок подробней о ресторане -->
+                            <!--<section class="details">-->
+                                <!--<div>-->
+                                    <!--<h2 class="detail_title">О ресторане</h2>-->
+                                    <!--<ul class="detail_columns js-show">-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/parking/" class="detail_name"-->
+                                               <!--sl-processed="1">Парковка</a>-->
+                                            <!--<span class="detail_sense">есть</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/no_cards/" class="detail_name"-->
+                                               <!--sl-processed="1">Банковские карты</a>-->
+                                            <!--<span class="detail_sense">принимаются</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/owner_offer/" class="detail_name"-->
+                                               <!--sl-processed="1">Скидка на меню</a>-->
+                                            <!--<span class="detail_sense">нет</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/breakfast/" class="detail_name"-->
+                                               <!--sl-processed="1">Завтраки</a>-->
+                                            <!--<span class="detail_sense">нет</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/buisness_lunch/" class="detail_name"-->
+                                               <!--sl-processed="1">Бизнес-ланч</a>-->
+                                            <!--<span class="detail_sense">пн-пт 12.00–16.00</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/wifi/" class="detail_name"-->
+                                               <!--sl-processed="1">Вайфай</a>-->
+                                            <!--<span class="detail_sense">есть</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/closed_for_banquet/"-->
+                                               <!--class="detail_name" sl-processed="1">Банкеты</a>-->
+                                            <!--<span class="detail_sense">есть</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/delivery/" class="detail_name"-->
+                                               <!--sl-processed="1">Доставка</a>-->
+                                            <!--<span class="detail_sense">есть</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/catering/" class="detail_name"-->
+                                               <!--sl-processed="1">Кейтеринг</a>-->
+                                            <!--<span class="detail_sense">нет</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/kids/" class="detail_name"-->
+                                               <!--sl-processed="1">Детям</a>-->
+                                            <!--<a class="detail_sense" href="/msk/restaurants/restaurant_list/kids_menu/"-->
+                                               <!--sl-processed="1">Детское меню</a>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column">-->
+                                            <!--<a href="/msk/restaurants/restaurant_list/500-1500/" class="detail_name"-->
+                                               <!--sl-processed="1">Средний чек</a>-->
+                                            <!--<span class="detail_sense">700–1500 рублей</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="detail_column _hidden"></li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                            <!--</section>-->
+                            <!-- Блок теги -->
+                            <!-- Меню ресторана -->
+                            <!-- block contact -->
+                                    <h2 >Контактная информация</h2>
+                                    <ul >
+                                        <li >
+                                            <span >адрес</span>
+                                            <span  th:text="${restaraunt.address}"></span>
+                                        </li>
+                                        <li >
+                                            <span >район</span>
+                                            <span  th:text="${restaraunt.district}"></span>
+                                        </li>
+                                        <li >
+                                            <span >время работы</span>
+                                            <span >пн-вс 12.00–0.00</span>
+                                        </li>
+                                        <li >
+                                            <span >телефон</span>
+                                            <span th:text="${restaraunt.publicPhone}"></span>
+                                        </li>
+                                        <li >
+                                            <span >посадочных мест</span>
+                                            <span  th:text="${restaraunt.sitCount}"></span>
+                                        </li>
+                                    </ul>
+                            <!--<section class="place_contact" style="margin: 45px 0 45px;">-->
+                                <!--<h2 class="contact_title">Ресторан на карте</h2>-->
+                            <!--</section>-->
+                            <!-- block selections -->
+                            <!-- end block selections -->
+
+                            <!-- block restaurant reviews -->
+                            <!-- endblock restaurant reviews -->
+
+                            <!--<section class="nearest">-->
+                                <!--<div class="nearest_container">-->
+                                    <div class="nearest_title">Места рядом</div>
+                                <!--</div>-->
+                            <!--</section>-->
+
+                            <!--ads place-->
+
+                            <!-- block interests -->
+                            <!-- endblock interests -->
+
+                            <!--ads place-->
+                        </div>
+                        <!--ads place-->
+                    <!--</section>-->
+                </div>
+            <!--</section>-->
+        </div>
+    </div>
+</body>
+</html>

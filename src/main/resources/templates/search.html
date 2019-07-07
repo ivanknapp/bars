@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Поиск</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+</head>
+<body class="page page_index  page_no-touch">
+    <div class="page-wrapper">
+        <div class="page_container _topline">
+            <header class="header">
+                <div class="banner _Billboard"></div>
+                <section class="topline">
+                    <div class="topline-top"></div>
+                    <div class="topline-bottom">
+                        <nav>
+                                <span class="topline-bottom-link">
+                                    <a href="/msk/cinema/">КИНО</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/concerts/">КОНЦЕРТЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/theatre/">ТЕАТР</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/exhibitions/">ВЫСТАВКИ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/kids/">ДЕТИ</a>
+                                </span>
+                            <span class="topline-bottom-link _active">
+                                    <a href="/msk/restaurants/">РЕСТОРАНЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/msk/quests/">КВЕСТЫ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/selection/">ПОДБОРКИ</a>
+                                </span>
+                            <span class="topline-bottom-link">
+                                    <a href="/">ВСЕ</a>
+                                </span>
+                        </nav>
+                        <span class="topline-bottom-link _choice">
+                                <a href="/msk/restaurants/restaurant_list/thebest/" class="topline-bottom-choice"
+                                   data-text="Лучшее в Москве">
+                                    <i class="label _normal _white"></i>
+                                </a>
+                            </span>
+                    </div>
+                </section>
+            </header>
+        </div>
+
+        <div class="page_container _search">
+            <div class="rootblock" id="suggest-root">
+                <div class="c8e9d27b__form-fonts">
+                    <form action="#" th:action="@{/search}" th:object="${searchRequest}" method="post" class="_5b3132fe__form-form">
+                        <input type="text" th:field="*{query}" class="_642e2d74__input-input" id="query" placeholder="Поиск по названию, типу кухни или расположению">
+                        <span th:if="${#fields.hasErrors('query')}" th:errors="*{query}" class="text-danger"></span>
+                        <input type="submit" class="c6c8b68d__button-button" value="найти">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="page_container">
+                <div class="page_container_left _container-search">
+                    <div class="search_header">
+                        <div class="search_header_text">
+                            <h1>Кафе и рестораны Москвы</h1>
+                        </div>
+                    </div>
+                    <section class="search j-list-container">
+                        <div class="page_container">
+                            <div class="results">
+                                <div class="results_text">
+                                    <h2><span th:text="'Найдено ' + ${count} + ' заведений'"></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <section class="search_results">
+                            <ul class="list s-search-rests j-list-wrapper _cards " data-minwidth="630">
+                                <li class="list_item j-first-item" th:each="bar : ${allBars}">
+                                    <!-- шаблон для отображения карточками -->
+                                    <span class="places_cards">
+                                        <div class="places_info">
+                                            <h2 class="places_title">
+                                                <a th:href="@{/restaurant/{id}(id=${bar.id})}" class="places_link">
+                                                    <span class="places_name" th:text="${bar.name}"></span>
+                                                </a>
+                                                <ul class="places-tag_items">
+                                                    <li class="places_cuisine places-tag_item">
+                                                        <a th:href="@{/restaurants/{barType}(barType=${bar.type})}" th:text="${bar.type}"></a>
+                                                    </li>
+                                                </ul>
+                                            </h2>
+                                            <span class="places_contact">Москва</span>
+                                            <a th:href="@{/restaurant/{id}(id=${bar.id})}" class="places_link">
+                                                <span class="places_contact">
+                                                    <span class="places_address" th:text="${bar.address}"></span>
+                                                    <span class="places_metro" th:text="${bar.district}"></span>
+                                                    <span class="places_phone" th:text="${bar.publicPhone}"></span><br>
+                                                    <span class="places_sit_count" th:text="'Посадочных мест ' + ${bar.sitCount}"></span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </span>
+                                </li>
+                            </ul>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

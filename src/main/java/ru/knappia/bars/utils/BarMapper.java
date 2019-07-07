@@ -1,8 +1,7 @@
 package ru.knappia.bars.utils;
 
-import ru.knappia.bars.camel.model.bar.Bar;
 import ru.knappia.bars.camel.model.bar.PublicPhone;
-import ru.knappia.bars.repository.LegalEntity;
+import ru.knappia.bars.repository.Bar;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -11,9 +10,9 @@ public class BarMapper implements Function<Object, Object> {
 
     @Override
     public Object apply(Object object) {
-        if (object instanceof Bar) {
-            final Bar bar = (Bar) object;
-            final LegalEntity entity = new LegalEntity();
+        if (object instanceof ru.knappia.bars.camel.model.bar.Bar) {
+            final ru.knappia.bars.camel.model.bar.Bar bar = (ru.knappia.bars.camel.model.bar.Bar) object;
+            final Bar entity = new Bar();
 
             entity.setType(bar.getTypeObject());
             entity.setId(bar.getGlobalId());

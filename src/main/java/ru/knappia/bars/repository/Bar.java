@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "bar", name = "entity")
 @Data
-public class LegalEntity {
+public class Bar {
     @Id
     private Integer id;
     private String type;
