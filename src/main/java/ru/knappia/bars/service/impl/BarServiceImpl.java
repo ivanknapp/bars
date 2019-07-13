@@ -43,6 +43,12 @@ public class BarServiceImpl implements BarService {
     }
 
     @Override
+    public List<Bar> searchByAddress(String address, Integer limit) {
+        final String addressPattern = makeSearchPattern(address);
+        return barRepository.searchByAddressAndLimit(addressPattern, limit);
+    }
+
+    @Override
     public List<Bar> searchByDistrict(String district) {
         final String districtPattern = makeSearchPattern(district);
         return barRepository.searchByDistrict(districtPattern);

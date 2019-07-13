@@ -142,7 +142,38 @@
     </div>
     <div>
         <h2>Места рядом</h2>
-        <!--select by district-->
+        <section class="search_results">
+            <ul class="list s-search-rests j-list-wrapper _cards " data-minwidth="630">
+                <li class="list_item j-first-item" th:each="bar : ${nearest}">
+                    <!-- шаблон для отображения карточками -->
+                    <span class="places_cards">
+                        <div class="places_info">
+                            <h2 class="places_title">
+                                <a th:href="@{/restaurant/{id}(id=${bar.id})}" class="places_link">
+                                    <span class="places_name" th:text="${bar.name}"></span>
+                                </a>
+                                <ul class="places-tag_items">
+                                    <li class="places_cuisine places-tag_item">
+                                        <a th:href="@{/restaurants/{barType}(barType=${bar.type})}"
+                                           th:text="${bar.type}"></a>
+                                    </li>
+                                </ul>
+                            </h2>
+                            <span class="places_contact">Москва</span>
+                            <a th:href="@{/restaurant/{id}(id=${bar.id})}" class="places_link">
+                                <span class="places_contact">
+                                    <span class="places_address" th:text="${bar.address}"></span>
+                                    <span class="places_metro" th:text="${bar.district}"></span>
+                                    <span class="places_phone" th:text="${bar.publicPhone}"></span><br>
+                                    <span class="places_sit_count"
+                                          th:text="'Посадочных мест ' + ${bar.sitCount}"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </span>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
 </body>

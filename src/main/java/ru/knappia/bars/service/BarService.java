@@ -16,6 +16,8 @@ public interface BarService {
 
     List<Bar> searchByAddress(String address);
 
+    List<Bar> searchByAddress(String address, Integer limit);
+
     List<Bar> searchByDistrict(String district);
 
     Optional<Bar> findBarById(Integer id);

@@ -59,8 +59,12 @@ public class SearchController {
 
     @RequestMapping(value = "/restaurant/{barId}", method = RequestMethod.GET)
     public String getBarById(@PathVariable Integer barId, Model theModel) {
+        final Bar bar = barService.findBarById(barId).orElseThrow(IllegalArgumentException::new);
+        List<Bar> nearest = barService.searchByAddress(bar.getAddress(), 3);
+        nearest.remove(bar);
         theModel.addAttribute("searchRequest", new SearchRequest());
-        theModel.addAttribute("restaraunt", barService.findBarById(barId).orElseThrow(IllegalArgumentException::new));
+        theModel.addAttribute("restaraunt", bar);
+        theModel.addAttribute("nearest", nearest);
         return "restaraunt_page";
     }
 

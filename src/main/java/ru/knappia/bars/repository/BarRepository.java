@@ -30,4 +30,11 @@ public interface BarRepository extends CrudRepository<Bar, Integer> {
     )
     List<Bar> searchByDistrict(String district);
 
+    @Query(value = "select * from bar.entity " +
+            "where to_tsvector('russian', address) @@ to_tsquery('russian', ?1) " +
+            "limit ?2",
+            nativeQuery = true
+    )
+    List<Bar> searchByAddressAndLimit(String address, Integer limit);
+
 }
