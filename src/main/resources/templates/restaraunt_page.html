@@ -7,190 +7,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" th:href="@{/header.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU" type="text/javascript"></script>
 </head>
 <body class="page page_index  page_no-touch">
-    <div class="page_wrapper ">
-        <div class="page_container _topline">
-            <header class="header">
-                <div class="banner _Billboard"></div>
-                <section class="topline">
-                    <div class="topline-top"></div>
-                    <div class="topline-bottom">
-                        <nav>
+<div class="page_wrapper ">
+    <div class="page_container _topline">
+        <header class="header">
+            <div class="banner _Billboard"></div>
+            <section class="topline">
+                <div class="topline-top"></div>
+                <div class="topline-bottom">
+                    <nav>
                                 <span class="topline-bottom-link">
                                     <a href="/msk/cinema/">КИНО</a>
                                 </span>
-                            <span class="topline-bottom-link">
+                        <span class="topline-bottom-link">
                                     <a href="/msk/concerts/">КОНЦЕРТЫ</a>
                                 </span>
-                            <span class="topline-bottom-link">
+                        <span class="topline-bottom-link">
                                     <a href="/msk/theatre/">ТЕАТР</a>
                                 </span>
-                            <span class="topline-bottom-link">
+                        <span class="topline-bottom-link">
                                     <a href="/msk/exhibitions/">ВЫСТАВКИ</a>
                                 </span>
-                            <span class="topline-bottom-link">
+                        <span class="topline-bottom-link">
                                     <a href="/msk/kids/">ДЕТИ</a>
                                 </span>
-                            <span class="topline-bottom-link _active">
+                        <span class="topline-bottom-link _active">
                                     <a href="/msk/restaurants/">РЕСТОРАНЫ</a>
                                 </span>
-                            <span class="topline-bottom-link">
+                        <span class="topline-bottom-link">
                                     <a href="/msk/quests/">КВЕСТЫ</a>
                                 </span>
-                            <span class="topline-bottom-link">
+                        <span class="topline-bottom-link">
                                     <a href="/selection/">ПОДБОРКИ</a>
                                 </span>
-                            <span class="topline-bottom-link">
+                        <span class="topline-bottom-link">
                                     <a href="/">ВСЕ</a>
                                 </span>
-                        </nav>
-                        <span class="topline-bottom-link _choice">
+                    </nav>
+                    <span class="topline-bottom-link _choice">
                                 <a href="/msk/restaurants/restaurant_list/thebest/" class="topline-bottom-choice"
                                    data-text="Лучшее в Москве">
                                     <i class="label _normal _white"></i>
                                 </a>
                             </span>
-                    </div>
-                </section>
-            </header>
-        </div>
-        <div class="page_container _search">
-            <div class="rootblock" id="suggest-root">
-                <div class="c8e9d27b__form-fonts">
-                    <form action="#" th:action="@{/search}" th:object="${searchRequest}" method="post" class="_5b3132fe__form-form">
-                        <input type="text" th:field="*{query}" class="_642e2d74__input-input" id="query" placeholder="Поиск по названию, типу кухни или расположению">
-                        <span th:if="${#fields.hasErrors('query')}" th:errors="*{query}" class="text-danger"></span>
-                        <input type="submit" class="c6c8b68d__button-button" value="найти">
-                    </form>
                 </div>
+            </section>
+        </header>
+    </div>
+    <div class="page_container _search">
+        <div class="rootblock" id="suggest-root">
+            <div class="c8e9d27b__form-fonts">
+                <form action="#" th:action="@{/search}" th:object="${searchRequest}" method="post"
+                      class="_5b3132fe__form-form">
+                    <input type="text" th:field="*{query}" class="_642e2d74__input-input" id="query"
+                           placeholder="Поиск по названию, типу кухни или расположению">
+                    <span th:if="${#fields.hasErrors('query')}" th:errors="*{query}" class="text-danger"></span>
+                    <input type="submit" class="c6c8b68d__button-button" value="найти">
+                </form>
             </div>
         </div>
-        <h2 th:text="${restaraunt}"></h2>
-        <!--content-->
-        <div id="content">
-            <!--<section class="place">-->
-                <div class="page_container">
-                    <!--<section class="info-section">-->
-                        <div class="page_container_left">
-                            <!-- Блок подробней о ресторане -->
-                            <!--<section class="details">-->
-                                <!--<div>-->
-                                    <!--<h2 class="detail_title">О ресторане</h2>-->
-                                    <!--<ul class="detail_columns js-show">-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/parking/" class="detail_name"-->
-                                               <!--sl-processed="1">Парковка</a>-->
-                                            <!--<span class="detail_sense">есть</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/no_cards/" class="detail_name"-->
-                                               <!--sl-processed="1">Банковские карты</a>-->
-                                            <!--<span class="detail_sense">принимаются</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/owner_offer/" class="detail_name"-->
-                                               <!--sl-processed="1">Скидка на меню</a>-->
-                                            <!--<span class="detail_sense">нет</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/breakfast/" class="detail_name"-->
-                                               <!--sl-processed="1">Завтраки</a>-->
-                                            <!--<span class="detail_sense">нет</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/buisness_lunch/" class="detail_name"-->
-                                               <!--sl-processed="1">Бизнес-ланч</a>-->
-                                            <!--<span class="detail_sense">пн-пт 12.00–16.00</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/wifi/" class="detail_name"-->
-                                               <!--sl-processed="1">Вайфай</a>-->
-                                            <!--<span class="detail_sense">есть</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/closed_for_banquet/"-->
-                                               <!--class="detail_name" sl-processed="1">Банкеты</a>-->
-                                            <!--<span class="detail_sense">есть</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/delivery/" class="detail_name"-->
-                                               <!--sl-processed="1">Доставка</a>-->
-                                            <!--<span class="detail_sense">есть</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/catering/" class="detail_name"-->
-                                               <!--sl-processed="1">Кейтеринг</a>-->
-                                            <!--<span class="detail_sense">нет</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/kids/" class="detail_name"-->
-                                               <!--sl-processed="1">Детям</a>-->
-                                            <!--<a class="detail_sense" href="/msk/restaurants/restaurant_list/kids_menu/"-->
-                                               <!--sl-processed="1">Детское меню</a>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column">-->
-                                            <!--<a href="/msk/restaurants/restaurant_list/500-1500/" class="detail_name"-->
-                                               <!--sl-processed="1">Средний чек</a>-->
-                                            <!--<span class="detail_sense">700–1500 рублей</span>-->
-                                        <!--</li>-->
-                                        <!--<li class="detail_column _hidden"></li>-->
-                                    <!--</ul>-->
-                                <!--</div>-->
-                            <!--</section>-->
-                            <!-- Блок теги -->
-                            <!-- Меню ресторана -->
-                            <!-- block contact -->
-                                    <h2 >Контактная информация</h2>
-                                    <ul >
-                                        <li >
-                                            <span >адрес</span>
-                                            <span  th:text="${restaraunt.address}"></span>
-                                        </li>
-                                        <li >
-                                            <span >район</span>
-                                            <span  th:text="${restaraunt.district}"></span>
-                                        </li>
-                                        <li >
-                                            <span >время работы</span>
-                                            <span >пн-вс 12.00–0.00</span>
-                                        </li>
-                                        <li >
-                                            <span >телефон</span>
-                                            <span th:text="${restaraunt.publicPhone}"></span>
-                                        </li>
-                                        <li >
-                                            <span >посадочных мест</span>
-                                            <span  th:text="${restaraunt.sitCount}"></span>
-                                        </li>
-                                    </ul>
-                            <!--<section class="place_contact" style="margin: 45px 0 45px;">-->
-                                <!--<h2 class="contact_title">Ресторан на карте</h2>-->
-                            <!--</section>-->
-                            <!-- block selections -->
-                            <!-- end block selections -->
-
-                            <!-- block restaurant reviews -->
-                            <!-- endblock restaurant reviews -->
-
-                            <!--<section class="nearest">-->
-                                <!--<div class="nearest_container">-->
-                                    <div class="nearest_title">Места рядом</div>
-                                <!--</div>-->
-                            <!--</section>-->
-
-                            <!--ads place-->
-
-                            <!-- block interests -->
-                            <!-- endblock interests -->
-
-                            <!--ads place-->
-                        </div>
-                        <!--ads place-->
-                    <!--</section>-->
-                </div>
-            <!--</section>-->
+    </div>
+    <div>
+        <h2>Контактная информация</h2>
+        <div>
+            <ul>
+                <li>
+                    <span>адрес: </span>
+                    <span th:text="${restaraunt.address}"></span>
+                </li>
+                <li>
+                    <span>район: </span>
+                    <span th:text="${restaraunt.district}"></span>
+                </li>
+                <li>
+                    <span>время работы: </span>
+                    <span>пн-вс 10:00 – 24:00</span>
+                </li>
+                <li>
+                    <span>телефон: </span>
+                    <span th:text="${restaraunt.publicPhone}"></span>
+                </li>
+                <li>
+                    <span>посадочных мест: </span>
+                    <span th:text="${restaraunt.sitCount}"></span>
+                </li>
+            </ul>
         </div>
     </div>
+    <div>
+        <h2>Кафе на карте</h2>
+        <div>
+            <script th:inline="javascript">
+                ymaps.ready(init);
+
+                var latitude = [[${restaraunt.latitudeWGS84}]];
+                var longitude = [[${restaraunt.longitudeWGS84}]];
+                var restName = [[${restaraunt.name}]];
+                var address = [[${restaraunt.address}]];
+
+                function init() {
+                    var map = new ymaps.Map('map', {
+                        center: [55.76, 37.64],
+                        zoom: 10,
+                        controls: ['zoomControl']
+                    });
+
+                    myGeoObject = new ymaps.GeoObject({
+                        // Описание геометрии.
+                        geometry: {
+                            type: "Point",
+                            coordinates: [latitude, longitude]
+                        },
+                        // Свойства.
+                        properties: {
+                            // Контент метки.
+                            iconContent: restName,
+                            hintContent: address
+                        }
+                    }, {
+                        // Опции.
+                        preset: 'islands#greenStretchyIcon'
+                    });
+
+                    map.geoObjects
+                        .add(myGeoObject);
+                    // меняем zoom
+                    map.setCenter(myGeoObject.geometry.getCoordinates(), 14, {duration: 300});
+                }
+            </script>
+            <div id="map" style="width:900px;height:250px"></div>
+        </div>
+    </div>
+    <div>
+        <h2>Места рядом</h2>
+        <!--select by district-->
+    </div>
+</div>
 </body>
 </html>
